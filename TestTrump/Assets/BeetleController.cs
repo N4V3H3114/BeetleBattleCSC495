@@ -22,6 +22,7 @@ public class BeetleController : MonoBehaviour
          pos.y = Mathf.Clamp01(pos.y);
          transform.position = Camera.main.ViewportToWorldPoint(pos);
 
+       
 
         if (anim.IsPlaying("Shoot"))
         {
@@ -42,6 +43,7 @@ public class BeetleController : MonoBehaviour
             if (x != 0 && y != 0)
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(x, y) * transform.eulerAngles.z);
+                Debug.Log("the transform x is " + transform.eulerAngles.x);
             }
 
             if (x != 0 || y != 0)
