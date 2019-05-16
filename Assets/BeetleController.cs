@@ -17,13 +17,6 @@ public class BeetleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
-         pos.x = Mathf.Clamp01(pos.x);
-         pos.y = Mathf.Clamp01(pos.y);
-         transform.position = Camera.main.ViewportToWorldPoint(pos);
-         
-       
-
         if (anim.IsPlaying("Shoot"))
         {
             float x = 0;
@@ -43,7 +36,10 @@ public class BeetleController : MonoBehaviour
             if (x != 0 && y != 0)
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(x, y) * transform.eulerAngles.z);
-                Debug.Log("the transform x is " + transform.eulerAngles.x);
+            }
+            else if(x == 0 && y == 0)
+            {
+                anim.Play("Ass");
             }
 
             if (x != 0 || y != 0)

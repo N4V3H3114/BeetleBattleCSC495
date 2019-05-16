@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class targetHit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter(Collision c)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (c.gameObject.name == "beetle")
+        {
+            Destroy(c.gameObject);
+        }
     }
 }
