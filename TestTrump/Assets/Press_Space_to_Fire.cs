@@ -28,6 +28,7 @@ public class Press_Space_to_Fire : MonoBehaviour
     public void on_click()
     {
         pressed = true;
+        Debug.Log("Emitting");
     }
 
     // Update is called once per frame

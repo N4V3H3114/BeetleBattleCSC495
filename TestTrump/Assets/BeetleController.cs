@@ -21,7 +21,7 @@ public class BeetleController : MonoBehaviour
          pos.x = Mathf.Clamp01(pos.x);
          pos.y = Mathf.Clamp01(pos.y);
          transform.position = Camera.main.ViewportToWorldPoint(pos);
-
+         
        
 
         if (anim.IsPlaying("Shoot"))
