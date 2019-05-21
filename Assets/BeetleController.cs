@@ -63,14 +63,25 @@ public class BeetleController : NetworkBehaviour
       
     }
 
+    public void FirePressed()
+    {
+        Debug.Log("Button was pressed");
+        CmdFireAnim();
+    }
+
     [Command]
     public void CmdFireAnim()
     {
+
+       
 
         //The Bullet instantiation happens here.
         Debug.Log("Should fire");
         GameObject Temporary_Bullet_Handler;
         Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+
+        GameObject beetle = GameObject.FindGameObjectWithTag("Player");
+        transform.SetParent(beetle.transform, false);
 
         //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
         //This is EASILY corrected here, you might have to rotate it from a different axis and or angle based on your particular mesh.
@@ -79,11 +90,13 @@ public class BeetleController : NetworkBehaviour
         //Retrieve the Rigidbody component from the instantiated Bullet and control it.
         Rigidbody Temporary_RigidBody;
         Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
-
         //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
-        Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
+        Temporary_RigidBody.velocity = new Vector3(0f, 0f, 6f);
 
-        NetworkServer.Spawn(Temporary_Bullet_Handler);
+        Debug.Log(Temporary_RigidBody.velocity.magnitude);
+        //NetworkServer.Spawn(Temporary_Bullet_Handler);
+
+        Debug.Log(Temporary_RigidBody.velocity.magnitude);
         //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
         Destroy(Temporary_Bullet_Handler, 4.0f);
     }

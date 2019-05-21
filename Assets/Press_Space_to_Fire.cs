@@ -21,7 +21,9 @@ public class Press_Space_to_Fire : MonoBehaviour
     public void on_click()
     {
         pressed = true;
-        Debug.Log("Emitting");
+        Debug.Log("about to call fire");
+        beetle.CmdFireAnim();
+        pressed = false;
     }
 
     // Update is called once per frame
@@ -35,8 +37,7 @@ public class Press_Space_to_Fire : MonoBehaviour
             {
                 i = 0;
             }
-
-            beetle.CmdFireAnim();
+            
             
         }
         pressed = false;

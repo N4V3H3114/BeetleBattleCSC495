@@ -7,8 +7,8 @@ public class AddToBeetle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject beetle = GameObject.FindGameObjectWithTag("Player");
-        transform.SetParent(beetle.transform, false);
+        
+
     }
 
 }
