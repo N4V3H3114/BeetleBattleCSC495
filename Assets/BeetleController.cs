@@ -9,17 +9,18 @@ public class BeetleController : NetworkBehaviour
     private Rigidbody rb;
     private Animation anim;
     //Drag in the Bullet Emitter from the Component Inspector.
-    public GameObject Bullet_Emitter;
+    public Transform Bullet_Emitter;
 
     //Drag in the Bullet Prefab from the Component Inspector.
     public GameObject Bullet;
     // Start is called before the first frame update
     public float Bullet_Forward_Force;
+    private static bool pressed;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animation>();
-        
     }
 
     // Update is called once per frame
@@ -29,6 +30,13 @@ public class BeetleController : NetworkBehaviour
         {
             return;
         }
+
+        if(pressed)
+        {
+            CmdFireAnim();
+            pressed = false;
+        }
+        
 
         if (anim.IsPlaying("Shoot"))
         {
@@ -65,39 +73,36 @@ public class BeetleController : NetworkBehaviour
 
     public void FirePressed()
     {
-        Debug.Log("Button was pressed");
-        CmdFireAnim();
+        pressed = true;
     }
 
     [Command]
     public void CmdFireAnim()
     {
-
-       
-
         //The Bullet instantiation happens here.
         Debug.Log("Should fire");
         GameObject Temporary_Bullet_Handler;
-        Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+        if(Bullet_Emitter.position.z > 1.582)
+        {
+            Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position - new Vector3(0,0,.7f), Bullet_Emitter.rotation);
+            Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * -6.0f;
+        }
+        else
+        {
+            Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position, Bullet_Emitter.rotation);
+            Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * 6.0f;
+        }
+        
 
-        GameObject beetle = GameObject.FindGameObjectWithTag("Player");
-        transform.SetParent(beetle.transform, false);
+        //GameObject bulletParented = GameObject.FindGameObjectWithTag("Player");
+        // transform.SetParent(bulletParented.transform, false);
 
-        //Sometimes bullets may appear rotated incorrectly due to the way its pivot was set from the original modeling package.
-        //This is EASILY corrected here, you might have to rotate it from a different axis and or angle based on your particular mesh.
-        Temporary_Bullet_Handler.transform.Rotate(Vector3.left * 90);
-
-        //Retrieve the Rigidbody component from the instantiated Bullet and control it.
-        Rigidbody Temporary_RigidBody;
-        Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
+        //Rigidbody Temporary_RigidBody;
+        // Temporary_RigidBody = bullet.GetComponent<Rigidbody>();
         //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
-        Temporary_RigidBody.velocity = new Vector3(0f, 0f, 6f);
+        //Temporary_RigidBody.velocity = new Vector3(0f, 0f, 6f);
 
-        Debug.Log(Temporary_RigidBody.velocity.magnitude);
-        //NetworkServer.Spawn(Temporary_Bullet_Handler);
-
-        Debug.Log(Temporary_RigidBody.velocity.magnitude);
-        //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
-        Destroy(Temporary_Bullet_Handler, 4.0f);
+        Destroy(Temporary_Bullet_Handler, 2.0f);
+        NetworkServer.Spawn(Temporary_Bullet_Handler);
     }
 }
