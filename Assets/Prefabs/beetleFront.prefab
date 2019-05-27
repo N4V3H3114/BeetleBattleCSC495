@@ -1100,7 +1100,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!65 &7083913555142494454
 BoxCollider:
@@ -1126,12 +1126,13 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: a83dd0574e49a3c4f805d9f522fd6be6, type: 3}
   m_Animations:
-  - {fileID: 7400000, guid: a83dd0574e49a3c4f805d9f522fd6be6, type: 3}
+  - {fileID: 7400010, guid: 9cb299d4ddb87d74e9b096524f3da1f7, type: 3}
   - {fileID: 7400002, guid: a83dd0574e49a3c4f805d9f522fd6be6, type: 3}
   - {fileID: 7400004, guid: a83dd0574e49a3c4f805d9f522fd6be6, type: 3}
   - {fileID: 7400006, guid: a83dd0574e49a3c4f805d9f522fd6be6, type: 3}
-  - {fileID: 7400008, guid: a83dd0574e49a3c4f805d9f522fd6be6, type: 3}
+  - {fileID: 7400006, guid: 9cb299d4ddb87d74e9b096524f3da1f7, type: 3}
   - {fileID: 7400010, guid: a83dd0574e49a3c4f805d9f522fd6be6, type: 3}
+  - {fileID: 7400000, guid: a83dd0574e49a3c4f805d9f522fd6be6, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

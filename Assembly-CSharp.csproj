@@ -56,6 +56,7 @@
      <Compile Include="Assets\AddToBeetle.cs" />
      <Compile Include="Assets\BeetleController.cs" />
      <Compile Include="Assets\deployStageOnce.cs" />
+     <Compile Include="Assets\Health.cs" />
      <Compile Include="Assets\Press_Space_to_Fire.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />

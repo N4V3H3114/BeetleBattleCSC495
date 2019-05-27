@@ -16,11 +16,23 @@ public class BeetleController : NetworkBehaviour
     // Start is called before the first frame update
     public float Bullet_Forward_Force;
     private static bool pressed;
+    private static bool behindLine;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animation>();
+        float lineZ = GameObject.Find("MiddleLine").transform.position.z;
+        if (Bullet_Emitter.position.z > lineZ)
+        {
+            behindLine = true;
+        }
+        else
+            behindLine = false;
+
+
+
     }
 
     // Update is called once per frame
@@ -36,9 +48,8 @@ public class BeetleController : NetworkBehaviour
             CmdFireAnim();
             pressed = false;
         }
-        
 
-        if (anim.IsPlaying("Shoot"))
+        if (anim.IsPlaying("Shoot") || anim.IsPlaying("ShootBack"))
         {
             float x = 0;
             float y = 0;
@@ -60,12 +71,20 @@ public class BeetleController : NetworkBehaviour
             }
             else if(x == 0 && y == 0)
             {
-                anim.Play("Ass");
+                if(behindLine)
+                {
+                    anim.Play("AssBack");
+                }
+                else
+                    anim.Play("Ass");
             }
 
             if (x != 0 || y != 0)
             {
-                anim.Play("Walk");
+                if(behindLine)
+                    anim.Play("WalkBack");
+                else
+                    anim.Play("Walk");
             }
         }
       
@@ -82,7 +101,7 @@ public class BeetleController : NetworkBehaviour
         //The Bullet instantiation happens here.
         Debug.Log("Should fire");
         GameObject Temporary_Bullet_Handler;
-        if(Bullet_Emitter.position.z > 1.582)
+        if(behindLine)
         {
             Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position - new Vector3(0,0,.7f), Bullet_Emitter.rotation);
             Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * -6.0f;
@@ -92,6 +111,7 @@ public class BeetleController : NetworkBehaviour
             Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position, Bullet_Emitter.rotation);
             Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * 6.0f;
         }
+        Debug.Log(Bullet_Emitter.position.z);
         
 
         //GameObject bulletParented = GameObject.FindGameObjectWithTag("Player");
@@ -104,5 +124,9 @@ public class BeetleController : NetworkBehaviour
 
         Destroy(Temporary_Bullet_Handler, 2.0f);
         NetworkServer.Spawn(Temporary_Bullet_Handler);
+        if (behindLine)
+            anim.Play("ShootBack");
+        else
+            anim.Play("Shoot");
     }
 }
