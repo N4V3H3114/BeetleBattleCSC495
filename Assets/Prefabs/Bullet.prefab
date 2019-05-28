@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7972105899948324134}
   - component: {fileID: 6879482782954298576}
   - component: {fileID: 8344272803981500936}
-  - component: {fileID: 8323850624298510523}
+  - component: {fileID: 2158242472107459471}
   m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
@@ -156,7 +156,7 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &8323850624298510523
+--- !u!114 &2158242472107459471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

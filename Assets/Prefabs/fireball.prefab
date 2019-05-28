@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8398496447508311291}
   - component: {fileID: 58141736432183434}
   - component: {fileID: 4692820888849739519}
+  - component: {fileID: 1982523538964473627}
   m_Layer: 10
   m_Name: fireball
   m_TagString: Untagged
@@ -159,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
+  m_TransformSyncMode: 3
   m_SendInterval: 0
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
@@ -185,3 +186,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1982523538964473627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25558169228940619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7178b3f48663554db9648a5228a3c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

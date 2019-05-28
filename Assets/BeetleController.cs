@@ -16,13 +16,29 @@ public class BeetleController : NetworkBehaviour
     // Start is called before the first frame update
     public float Bullet_Forward_Force;
     private static bool pressed;
-    private static bool behindLine;
-
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animation>();
+        
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
+        if (pressed)
+        {
+            CmdFireAnim();
+            pressed = false;
+        }
+        bool behindLine;
         float lineZ = GameObject.Find("MiddleLine").transform.position.z;
         if (Bullet_Emitter.position.z > lineZ)
         {
@@ -30,24 +46,6 @@ public class BeetleController : NetworkBehaviour
         }
         else
             behindLine = false;
-
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(!isLocalPlayer)
-        {
-            return;
-        }
-
-        if(pressed)
-        {
-            CmdFireAnim();
-            pressed = false;
-        }
 
         if (anim.IsPlaying("Shoot") || anim.IsPlaying("ShootBack"))
         {
@@ -69,7 +67,7 @@ public class BeetleController : NetworkBehaviour
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(x, y) * transform.eulerAngles.z);
             }
-            else if(x == 0 && y == 0)
+            else if (x == 0 && y == 0)
             {
                 if(behindLine)
                 {
@@ -82,12 +80,14 @@ public class BeetleController : NetworkBehaviour
             if (x != 0 || y != 0)
             {
                 if(behindLine)
+                {
                     anim.Play("WalkBack");
+                }
                 else
-                    anim.Play("Walk");
+                anim.Play("Walk");
             }
         }
-      
+
     }
 
     public void FirePressed()
@@ -101,32 +101,25 @@ public class BeetleController : NetworkBehaviour
         //The Bullet instantiation happens here.
         Debug.Log("Should fire");
         GameObject Temporary_Bullet_Handler;
-        if(behindLine)
+        
+        if (Bullet_Emitter.position.z > GameObject.Find("MiddleLine").transform.position.z)
         {
-            Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position - new Vector3(0,0,.7f), Bullet_Emitter.rotation);
+            Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position - new Vector3(0, 0, .7f), Bullet_Emitter.rotation);
             Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * -6.0f;
+            anim.Play("ShootBack");
+            Debug.Log("I am firing backwards");
         }
         else
         {
             Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position, Bullet_Emitter.rotation);
             Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * 6.0f;
+            anim.Play("Shoot");
+            Debug.Log("I am firing forwards");
         }
-        Debug.Log(Bullet_Emitter.position.z);
-        
 
-        //GameObject bulletParented = GameObject.FindGameObjectWithTag("Player");
-        // transform.SetParent(bulletParented.transform, false);
-
-        //Rigidbody Temporary_RigidBody;
-        // Temporary_RigidBody = bullet.GetComponent<Rigidbody>();
-        //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
-        //Temporary_RigidBody.velocity = new Vector3(0f, 0f, 6f);
+        Debug.Log(Bullet_Emitter.position.z + " line is " + GameObject.Find("MiddleLine").transform.position.z);
 
         Destroy(Temporary_Bullet_Handler, 2.0f);
         NetworkServer.Spawn(Temporary_Bullet_Handler);
-        if (behindLine)
-            anim.Play("ShootBack");
-        else
-            anim.Play("Shoot");
     }
 }
