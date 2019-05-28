@@ -1070,7 +1070,7 @@ Transform:
   - {fileID: 836072916}
   - {fileID: 1425716095}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &836072915
 GameObject:
@@ -1178,6 +1178,7 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 8407128392926484724, guid: 6252cc209cd2ea749bd420031127f25c, type: 3}
+  - {fileID: 25558169228940619, guid: 26dc279d6dc3e6e4e966deeb0a55e586, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -1220,7 +1221,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 0500000000000000
+  m_Channels: 
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
@@ -1245,7 +1246,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019879800
 GameObject:
@@ -1940,7 +1941,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7083913555142494453, guid: e5e9e28a22a3a4343ad4583d8560ff6a,
+      - m_Target: {fileID: 9165197662746554747, guid: 90c84269b0f6a8444b3b80ecb45eab4b,
           type: 3}
         m_MethodName: FirePressed
         m_Mode: 1

@@ -18,7 +18,6 @@ public class BeetleController : NetworkBehaviour
     private static bool pressed;
     private static bool behindLine;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,9 +29,6 @@ public class BeetleController : NetworkBehaviour
         }
         else
             behindLine = false;
-
-
-
     }
 
     // Update is called once per frame
@@ -49,7 +45,8 @@ public class BeetleController : NetworkBehaviour
             pressed = false;
         }
 
-        if (anim.IsPlaying("Shoot") || anim.IsPlaying("ShootBack"))
+      
+        if ((anim.IsPlaying("Shoot") || anim.IsPlaying("ShootBack")))
         {
             float x = 0;
             float y = 0;
@@ -71,7 +68,7 @@ public class BeetleController : NetworkBehaviour
             }
             else if(x == 0 && y == 0)
             {
-                if(behindLine)
+                if (behindLine)
                 {
                     anim.Play("AssBack");
                 }
@@ -81,7 +78,7 @@ public class BeetleController : NetworkBehaviour
 
             if (x != 0 || y != 0)
             {
-                if(behindLine)
+                if (behindLine)
                     anim.Play("WalkBack");
                 else
                     anim.Play("Walk");
@@ -98,35 +95,27 @@ public class BeetleController : NetworkBehaviour
     [Command]
     public void CmdFireAnim()
     {
-        //The Bullet instantiation happens here.
         Debug.Log("Should fire");
         GameObject Temporary_Bullet_Handler;
-        if(behindLine)
+        if (behindLine)
         {
-            Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position - new Vector3(0,0,.7f), Bullet_Emitter.rotation);
+            Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position - new Vector3(0, 0, .7f), Bullet_Emitter.rotation);
             Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * -6.0f;
+            anim.Play("ShootBack");
         }
         else
         {
             Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position, Bullet_Emitter.rotation);
             Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * 6.0f;
+            anim.Play("Shoot");
         }
         Debug.Log(Bullet_Emitter.position.z);
-        
-
-        //GameObject bulletParented = GameObject.FindGameObjectWithTag("Player");
-        // transform.SetParent(bulletParented.transform, false);
-
-        //Rigidbody Temporary_RigidBody;
-        // Temporary_RigidBody = bullet.GetComponent<Rigidbody>();
-        //Tell the bullet to be "pushed" forward by an amount set by Bullet_Forward_Force.
-        //Temporary_RigidBody.velocity = new Vector3(0f, 0f, 6f);
-
+        Debug.Log("position is " + Bullet_Emitter.position.z);
         Destroy(Temporary_Bullet_Handler, 2.0f);
         NetworkServer.Spawn(Temporary_Bullet_Handler);
-        if (behindLine)
-            anim.Play("ShootBack");
-        else
-            anim.Play("Shoot");
+
+       
+        //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
+       
     }
 }

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7083913555436913718}
+  - component: {fileID: 7033931993536575242}
   m_Layer: 0
   m_Name: BulletEmitter
   m_TagString: Player
@@ -30,6 +31,18 @@ Transform:
   m_Father: {fileID: 7083913555596857710}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7033931993536575242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083913555436913717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef9e073d884614428d67365b0fdf677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7083913555596758272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1072,7 @@ GameObject:
   - component: {fileID: 7083913555142494455}
   - component: {fileID: 7083913555142494454}
   - component: {fileID: 7083913555142494448}
+  - component: {fileID: 7083913555142494452}
   - component: {fileID: 7083913555142494453}
   - component: {fileID: 8325077902059164113}
   - component: {fileID: 2358766713334528797}
@@ -1137,6 +1151,18 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!114 &7083913555142494452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083913555596758350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc41766409310c4a8ce705a0bd351e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7083913555142494453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,7 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet_Emitter: {fileID: 7083913555436913718}
-  Bullet: {fileID: 8407128392926484724, guid: 6252cc209cd2ea749bd420031127f25c, type: 3}
+  Bullet: {fileID: 25558169228940619, guid: 26dc279d6dc3e6e4e966deeb0a55e586, type: 3}
   Bullet_Forward_Force: 8
 --- !u!114 &8325077902059164113
 MonoBehaviour:
@@ -1197,8 +1223,8 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.05882353
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0

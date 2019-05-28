@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public const int maxHealth = 100;
     public int currentHealth = maxHealth;
+    public RectTransform healthbar;
 
     public void TakeDamage(int amount)
     {
@@ -15,5 +18,7 @@ public class Health : MonoBehaviour
             currentHealth = 0;
             Debug.Log("Die");
         }
+
+        healthbar.sizeDelta = new Vector2(currentHealth * 2, healthbar.sizeDelta.y);
     }
 }
