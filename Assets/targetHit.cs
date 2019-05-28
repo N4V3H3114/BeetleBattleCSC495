@@ -5,7 +5,6 @@ public class targetHit : MonoBehaviour
 {
     void OnCollisionEnter(Collision c)
     {
-        
             GameObject hit = c.gameObject;
             Health health = hit.GetComponent<Health>();
 
@@ -15,5 +14,5 @@ public class targetHit : MonoBehaviour
             }
 
             Destroy(gameObject);
+        }
     }
-}

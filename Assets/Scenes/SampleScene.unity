@@ -1941,7 +1941,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7083913555142494453, guid: e5e9e28a22a3a4343ad4583d8560ff6a,
+      - m_Target: {fileID: 9165197662746554747, guid: 90c84269b0f6a8444b3b80ecb45eab4b,
           type: 3}
         m_MethodName: FirePressed
         m_Mode: 1

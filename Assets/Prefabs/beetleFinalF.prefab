@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 9165197662746554747}
   - component: {fileID: 8609697664673720304}
   - component: {fileID: 1959756751820794389}
-  - component: {fileID: 4112710756718321219}
+  - component: {fileID: 1686248050812457794}
   m_Layer: 0
   m_Name: beetleFinalF
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   - {fileID: 7195059753862286369}
   - {fileID: 7195059753862286445}
   - {fileID: 5993376266608509049}
-  - {fileID: 801471940181509763}
+  - {fileID: 7714818820546029368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -221,9 +221,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.881426, y: 9.806115, z: 10.865916}
-  m_Center: {x: 0.16054611, y: 4.403056, z: -0.25488785}
---- !u!114 &4112710756718321219
+  m_Size: {x: 13.881426, y: 9.806115, z: 10.849576}
+  m_Center: {x: 0.16054611, y: 4.403056, z: -0.26305693}
+--- !u!114 &1686248050812457794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 100
-  healthbar: {fileID: 853151855158428641}
+  healthbar: {fileID: 7771222546740781658}
 --- !u!1 &7195059753862320133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,7 +1476,7 @@ Transform:
   m_Father: {fileID: 7195059753862286365}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &7862192487151787882
+--- !u!1001 &942363676227141329
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1595,15 +1595,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f42053cda0461b458a143d5e646da80, type: 3}
---- !u!224 &801471940181509763 stripped
+--- !u!224 &7714818820546029368 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7350851039322118633, guid: 7f42053cda0461b458a143d5e646da80,
     type: 3}
-  m_PrefabInstance: {fileID: 7862192487151787882}
+  m_PrefabInstance: {fileID: 942363676227141329}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &853151855158428641 stripped
+--- !u!224 &7771222546740781658 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7407048641426381963, guid: 7f42053cda0461b458a143d5e646da80,
     type: 3}
-  m_PrefabInstance: {fileID: 7862192487151787882}
+  m_PrefabInstance: {fileID: 942363676227141329}
   m_PrefabAsset: {fileID: 0}

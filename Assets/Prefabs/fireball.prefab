@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8398496447508311291}
   - component: {fileID: 58141736432183434}
   - component: {fileID: 4692820888849739519}
-  - component: {fileID: 1982523538964473627}
+  - component: {fileID: 1839022390301931175}
   m_Layer: 10
   m_Name: fireball
   m_TagString: Untagged
@@ -186,7 +186,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1982523538964473627
+--- !u!114 &1839022390301931175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

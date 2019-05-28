@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet_Emitter: {fileID: 7083913555436913718}
-  Bullet: {fileID: 8407128392926484724, guid: 6252cc209cd2ea749bd420031127f25c, type: 3}
+  Bullet: {fileID: 25558169228940619, guid: 26dc279d6dc3e6e4e966deeb0a55e586, type: 3}
   Bullet_Forward_Force: 8
   pressed: 0
 --- !u!114 &8325077902059164113

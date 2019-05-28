@@ -21,8 +21,6 @@ public class BeetleController : NetworkBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animation>();
-        
-        
     }
 
     // Update is called once per frame
@@ -47,7 +45,8 @@ public class BeetleController : NetworkBehaviour
         else
             behindLine = false;
 
-        if (anim.IsPlaying("Shoot") || anim.IsPlaying("ShootBack"))
+      
+        if ((anim.IsPlaying("Shoot") || anim.IsPlaying("ShootBack")))
         {
             float x = 0;
             float y = 0;
@@ -69,7 +68,7 @@ public class BeetleController : NetworkBehaviour
             }
             else if (x == 0 && y == 0)
             {
-                if(behindLine)
+                if (behindLine)
                 {
                     anim.Play("AssBack");
                 }
@@ -79,16 +78,14 @@ public class BeetleController : NetworkBehaviour
 
             if (x != 0 || y != 0)
             {
-                if(behindLine)
-                {
+
+                if (behindLine)
                     anim.Play("WalkBack");
                 }
                 else
                 anim.Play("Walk");
             }
         }
-
-    }
 
     public void FirePressed()
     {
@@ -98,7 +95,6 @@ public class BeetleController : NetworkBehaviour
     [Command]
     public void CmdFireAnim()
     {
-        //The Bullet instantiation happens here.
         Debug.Log("Should fire");
         GameObject Temporary_Bullet_Handler;
         
@@ -121,5 +117,8 @@ public class BeetleController : NetworkBehaviour
 
         Destroy(Temporary_Bullet_Handler, 2.0f);
         NetworkServer.Spawn(Temporary_Bullet_Handler);
+        }
+       
+        //Basic Clean Up, set the Bullets to self destruct after 10 Seconds, I am being VERY generous here, normally 3 seconds is plenty.
+       
     }
-}
