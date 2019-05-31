@@ -13,7 +13,7 @@ public class MenuButtons : MonoBehaviour
     public string newGameName;
 
 
-    public void newGame()
+    public void newGame() //button to create the new scene for the game
     {
         SceneManager.LoadScene(newGameName);
     }

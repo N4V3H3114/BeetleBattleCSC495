@@ -11,6 +11,10 @@ public class targetHit : MonoBehaviour
             if(health != null)
             {
                 health.TakeDamage(10);
+                if(health.getHealth() == 0) //if the hit target's health is 0 they should be removed
+            {
+                Destroy(hit);
+            }
             }
 
             Destroy(gameObject);
