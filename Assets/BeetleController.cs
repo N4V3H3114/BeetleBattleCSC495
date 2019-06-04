@@ -105,8 +105,8 @@ public class BeetleController : NetworkBehaviour
         if (Bullet_Emitter.position.z > GameObject.Find("MiddleLine").transform.position.z) //check if player is behind the line or not
         {
             Temporary_Bullet_Handler = (GameObject)Instantiate(Bullet, Bullet_Emitter.position - new Vector3(0, 0, .7f), Bullet_Emitter.rotation); //offset where bullet spawns so it doesn't it player in the face
-            Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward * Bullet_Forward_Force; // set velocity  
-            anim.Play("ShootBack"); //play animation
+            Temporary_Bullet_Handler.GetComponent<Rigidbody>().velocity = Temporary_Bullet_Handler.transform.forward *  - Bullet_Forward_Force; // set velocity  
+            anim.Play("Shoot"); //play animation
         }
         else
         {
